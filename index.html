@@ -173,7 +173,7 @@
 
         .search-container {
             position: absolute;
-            top: 10px;
+            top: 90px;
             left: 10px;
             z-index: 1000;
             background: white;
@@ -472,7 +472,7 @@
         /* Rotation Controls */
         .rotation-controls {
             position: absolute;
-            bottom: 400px;
+            bottom: 350px;
             right: 10px;
             z-index: 1000;
             background: white;
@@ -508,7 +508,7 @@
         /* Cluster Controls */
         .cluster-controls {
             position: absolute;
-            top: 220px;
+            top: 315px;
             right: 10px;
             z-index: 1000;
             background: white;
@@ -2429,8 +2429,11 @@
             <div class="map-controls">
                 <h6>Base Maps</h6>
                 <button class="basemap-btn active" data-basemap="osm">OpenStreetMap</button>
-                <button class="basemap-btn" data-basemap="satellite">Satellite</button>
-                <button class="basemap-btn" data-basemap="terrain">Terrain</button>
+                <button class="basemap-btn" data-basemap="satellite">Esri Satellite</button>
+                <button class="basemap-btn" data-basemap="googleSatellite">Google Satellite</button>
+                <button class="basemap-btn" data-basemap="googleHybrid">Google Hybrid</button>
+                <button class="basemap-btn" data-basemap="googleTerrain">Google Terrain</button>
+                <button class="basemap-btn" data-basemap="terrain">OpenTopoMap</button>
             </div>
 
             <div class="rotation-controls">
@@ -3080,8 +3083,25 @@
         terrain: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a>',
             maxZoom: 17
+        }),
+        // Enhanced Google layers (add to your baseLayers object)
+        googleSatellite: L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            attribution: '&copy; <a href="https://maps.google.com">Google</a>',
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        }),
+        googleHybrid: L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            attribution: '&copy; <a href="https://maps.google.com">Google</a>',
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        }),
+        googleTerrain: L.tileLayer('https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+            attribution: '&copy; <a href="https://maps.google.com">Google</a>',
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         })
     };
+
 
     // Define all tourist sites with coordinates
     var touristSites = [
